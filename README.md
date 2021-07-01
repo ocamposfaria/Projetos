@@ -1,1 +1,1 @@
-Algoritmo para otimizar a criação de grades horárias de um aluno universitário.
+Algoritmo para otimizar a criação da grade horária de um aluno universitário.

@@ -1,3 +1,10 @@
+# Author: João Pedro Campos
+# Contact: ocamposfaria@gmail.com
+
+# VERSION 1.1.2
+
+#  #  #  #  #  #  #  #  IMPORTING LIBRARIES
+
 import discord
 from discord.ext import tasks
 import pytz
@@ -7,29 +14,37 @@ import time
 import random
 from keep_alive import keep_alive
 
-my_secret = os.environ['discord token']
 
-client = discord.Client()
+#  #  #  #  #  #  #  #  IMPORTING DATA AND SETING UP STUFF
 
-time.tzset()
+f = open('data_random.txt') # importing data to !random
+fato = f.read()
+f.close()
+fato = eval(fato)
+
+my_secret = os.environ['discord token'] # set discord token
+
+client = discord.Client() # set discord client
+
+time.tzset() # set timezone
 
 
-def variavel(x):
+def variavel(x):      # set up function to make a global variable
   global variavel
   variavel = x
 
-camara = 5
+camara = 5  # set up number of chambers in !roleta russa
 
-#  #  #  #  #  #  #  #  EVENTOS
+pessoa = ['o arthu','o danieu','o teteu','o juau','o gabireu','o totow'] # SET UP NAMES FOR !random
+
+#  #  #  #  #  #  #  #  CLIENT EVENTS
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
 
 
     if message.content.startswith('!comandos'):
-        await message.channel.send('alguns comandos para você experimentar: \n\n !oi juau robô \n !que vibe \n !me chama de inácio \n !fala pessoal \n !random \n !ativar eventos \n !loteria \n !roleta russa \n\n ou use !patch notes para ver as últimas atualizações')
+        await message.channel.send('alguns comandos para você experimentar: \n\n !oi juau robô \n !que vibe \n !me chama de inácio \n !fala pessoal \n !random \n !ativar eventos \n !loteria \n !roleta russa \n !adicionar \n\n ou use !patch notes para ver as últimas atualizações')
 
 
     if message.content.startswith('!oi juau robô'):
@@ -47,6 +62,7 @@ async def on_message(message):
     if message.content.startswith('!fala pessoal'):
         await message.channel.send('piroca chegou')
 
+
     if 'andrea' in message.content:
         await message.reply('CUIDADO', mention_author=False)
     if 'Andrea' in message.content:
@@ -58,15 +74,30 @@ async def on_message(message):
 
         
     if message.content.startswith('!ativar eventos'):
-        variavel(message)
-        await message.channel.send('você ativou meus eventos para este canal')
+      try:
+          variavel(message)
+          await message.channel.send('você ativou meus eventos para este canal')
+      except:
+          await message.channel.send('você já ativou meus eventos em algum canal')
+
+
+    if message.content.startswith('!adicionar'):
+      global fato
+      mensagem = message.content
+      fato.append(mensagem[11:])
+      f = open('data_random.txt', 'w')
+      f.write(str(fato))
+      f.close()
+      await message.channel.send('novo fato adicionado \'' + mensagem[11:] + '\'')
+
 
     if message.content.startswith('!random'):
       await message.channel.send(str(random.choice(pessoa)) + ' ' + str(random.choice(fato)))
 
+
     if message.content.startswith('!loteria'):
       x = random.random()
-      if x > 0.0000000199744885:
+      if x > 0.0000000199:
             await message.channel.send('você não ganhou na loteria')
       else:
             await message.channel.send('PQP VC GANHOU NA LOTERIA NÃO ACREDITO!!!!!!!!!!!!!!!!!!!!!!!!!!!')
@@ -95,9 +126,11 @@ async def on_message(message):
 
         await message.channel.send('...')
 
-        await message.channel.send('a versão 1.2 tá no grau: \n - agora toda vez que alguém mencionar o nome da prof de produto, o bot responde com \'CUIDADO\' \n - adicionado minigame !roleta russa, que tem 1/6 de chance de te matar \n - adicionado comando !loteria (cada vez que você chama o comando você tem aprox. 1 chance em 50.063.860 de ganhar na loteria (probabilidade da mega-sena) \n - adicionadas mais frases ao comando !random')
+        #await message.channel.send('a versão 1.2 tá no grau: \n - agora toda vez que alguém mencionar o nome da prof de produto, o bot responde com \'CUIDADO\' \n - adicionado minigame !roleta russa, que tem 1/6 de chance de te matar \n - adicionado comando !loteria (cada vez que você chama o comando você tem aprox. 1 chance em 50.063.860 de ganhar na loteria (probabilidade da mega-sena) \n - adicionadas mais frases ao comando !random')
 
-        await message.channel.send('a versão 1.2.1 tá no grau: \n - !roleta russa bug fixed')
+        #await message.channel.send('a versão 1.2.1 tá no grau: \n - !roleta russa bug fixed')
+
+        await message.channel.send('a versão 1.2.2 tá no grau: \n - agora o bot não avisa mais quem apagou uma mensagem \n - você pode adicionar fatos ao !random (CUIDADO AO UTILIZAR: INICIE A SENTENÇA COM UM VERBO E DEPOIS COM O RESTANTE DO PREDICADO. exemplo: !adicionar é palestrinha ---> !random ---> juau é palestrinha')
 
 
 @client.event
@@ -107,17 +140,10 @@ async def on_ready():
     await client.change_presence(status=discord.Status.online, activity=activity)
 
 
-@client.event
-async def on_message_delete(message):
-        await message.channel.send('apagou a mensagem né safado? <@' + str(message.author.id) + '>')
+# @client.event
+# async def on_message_delete(message):
+#        await message.channel.send('apagou a mensagem né safado? <@' + str(message.author.id) + '>')
 
-
-#  #  #  #  #  #  #  #  FATOS RANDOM DATABASE
-
-
-fato = ['só vacila','fede','é ruim demais no cod','é gente boa','é cringe','quer se formar logo','é comunista','é bolsonarista','abandona os amigos','é maconhista','comeu o cu de quem ta lendo','vai pagar o lanche hoje','ta morrendo de sono','não malhou hoje tsc tsc','se prostituiria pra comer x-burguer','deseja a todos uma boa noite','só queria férias','está cansado de carregar todo mundo nos trabalhos','vai ser o mais rico daqui, convenhamos','perdeu tudo! isso que dá jogar no bicho toda semana','assiste canal de day trader','adora poesia, ele é muito poeteiro','engravidou a namorada, mas ainda não descobriu','compra pack de pézinho escondido','quer ser hardcore mas sua mãe não deixa','quer levar as amizades daqui pra vida toda']
-
-pessoa = ['o arthu','o danieu','o teteu','o juau','o gabireu','o totow']
 
 
 #  #  #  #  #  #  #  #  LOOP
@@ -132,21 +158,22 @@ async def send():
   try:
 
     if dia_semana == 2 and hora == '16:00':
-      await variavel.channel.send('são quatro horas da tarde de uma quarta-feira, não é? \n semana praticamente encerrada')
+      await variavel.channel.send('são quatro horas da tarde de uma quarta-feira, não é?\nsemana praticamente encerrada @everyone')
+      await variavel.channel.send('https://www.youtube.com/watch?v=Tmy5JtL58dE')
 
     if dia_semana == 4 and hora == '08:00':
       await variavel.channel.send('https://www.youtube.com/watch?v=8GX9--xhf_A')
       await variavel.channel.send('GRAÇAS A DEUS É SEXTA-FEIRA HEIN @everyone')
 
     else:
-      print('não há eventos no momento (não esqueça de !ativar eventos)')
+      print(str(hora) + '-> não há eventos no momento (não esqueça de !ativar eventos)')
     
   except:
-    print('o evento não aconteceu pois não foi enviado !ativar eventos no canal desejado')
+    print(str(hora) + '-> o evento não aconteceu pois não foi enviado !ativar eventos no canal desejado')
 
 send.start()
 
-#  #  #  #  #  #  #  #  KEEP ALIVE
+#  #  #  #  #  #  #  #  KEEP ALIVE AND RUN BOT
 
 keep_alive()
 

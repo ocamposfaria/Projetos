@@ -2,5 +2,4 @@
 
 Desenvolvi um simples painel para acompanhar o avanço da COVID-19 em meados de abril de 2020, bem no começo da pandemia. Aqui disponibilizo o arquivo .pbix e um pequeno preview do painel.
 
-![Alt text](/relative/path/to/Painel COVID-19 Power BI//preview.png?raw=true "preview")
-![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
+![preview](https://user-images.githubusercontent.com/72720919/126917924-629ac2e2-e754-4c2c-b4ee-a799be018907.png)

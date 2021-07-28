@@ -4,4 +4,4 @@ Criei meu próprio bot do Discord para utilizar no servidor dos meus amigos. Ele
 
 De qualquer forma, o código na íntegra está aqui disponível para consulta!
 
--> atualização 28-07: agora o bot também retorna preços e variações de ações da bolsas de valores.
+*Atualização 28-07: agora o bot também retorna preços e variações de ações da bolsas de valores.

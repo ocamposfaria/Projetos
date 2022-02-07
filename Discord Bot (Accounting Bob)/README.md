@@ -6,4 +6,4 @@ O bot recebe uma mensagem de uma compra realizada, e registra a informação, co
 
 A ideia é que futuramente ele também criptografe os dados, para que qualquer pesso possa utilizar o bot sem precisar se preocupar com a exposição dos seus dados. 
 
-#### A expectativa é que ficará disponível para utilização em beta em 2022.
+#### Ficará disponível para utilização em beta em 2022.

@@ -1,16 +1,13 @@
 import pyautogui
 import time
 
-
-x = 0
-
 time.sleep(5)
 
-while x != 240:
+for i in range(200):
+	
     pyautogui.moveTo(1845, 365)
-    pyautogui.click()
+    #pyautogui.click()
     time.sleep(0.5)
     pyautogui.moveTo(1694, 539)
-    pyautogui.click()
+    #pyautogui.click()
     time.sleep(0.5)
-    x = x + 1

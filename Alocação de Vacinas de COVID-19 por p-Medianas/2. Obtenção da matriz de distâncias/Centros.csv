@@ -1,9 +1,9 @@
-centros,oferta
-Hospital Regional da Asa Norte,4000
-Hospital Regional da Ceilândia,100000
-Hospital Regional do Gama,100000
-Hospital Regional do Paranoá,100000
-Hospital Regional de Planaltina,100000
-Hospital Regional de Taguatinga,100000
-Hospital Regional de Sobradinho,100000
-UBS 1 - Núcleo Bandeirante,100000
+Coordenadas,centros,oferta
+"(-15.784740252519274, -47.88288095981049)",Hospital Regional da Asa Norte,1000000
+"(-15.815329489033282, -48.09636377330406)",Hospital Regional da Ceilândia,1000000
+"(-16.023213804778006, -48.06883533097185)",Hospital Regional do Gama,1000000
+"(-15.781501640212394, -47.78180683097506)",Hospital Regional do Paranoá,1000000
+"(-15.625506289151552, -47.652798730977054)",Hospital Regional de Planaltina,1000000
+"(-15.822536366700142, -48.069117673303815)",Hospital Regional de Taguatinga,1000000
+"(-15.648266989137372, -47.79261430214167)",Hospital Regional de Sobradinho,1000000
+"(-15.870380974162991, -47.96564623741133)",UBS 1 - Núcleo Bandeirante,1000000
